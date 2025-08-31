@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>MEN's SWEATSHIRT SIZE CHART</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 10px;
+      background: #fff;
+      color: #000;
+    }
+    .container {
+      max-width: 100%;
+      padding: 10px;
+    }
+    h2 {
+      text-align: center;
+      font-size: 24px;
+      color: #333;
+    }
+    .dropdown {
+      text-align: center;
+      margin-bottom: 20px;
+      font-size: 18px;
+    }
+    select {
+      padding: 8px 14px;
+      font-size: 18px;
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      text-align: center;
+      font-size: 18px;
+    }
+    th, td {
+      border: 1px solid #999;
+      padding: 16px 10px;
+    }
+    th {
+      background-color: #444;
+      color: #fff;
+      font-size: 19px;
+    }
+    tr:nth-child(even) {
+      background: #f5f5f5;
+    }
+
+    /* Responsive: Convert table to card layout on small screens */
+    @media screen and (max-width: 600px) {
+      table, thead, tbody, th, td, tr {
+        display: block;
+      }
+
+      thead {
+        display: none; /* Hide headers */
+      }
+
+      tr {
+        margin-bottom: 15px;
+        border: 1px solid #ccc;
+        padding: 10px;
+        border-radius: 6px;
+        background: #f9f9f9;
+      }
+
+      td, th {
+        border: none;
+        padding: 8px;
+        text-align: left;
+        position: relative;
+      }
+
+      td:before {
+        content: attr(data-label);
+        font-weight: bold;
+        display: block;
+        margin-bottom: 5px;
+        color: #333;
+      }
+
+      h2 {
+        font-size: 22px;
+      }
+      select {
+        font-size: 20px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h2>MEN's SWEATSHIRT SIZE CHART</h2>
+    <div class="dropdown">
+      <label for="unit-select">Size in: </label>
+      <select id="unit-select" onchange="toggleUnits()">
+        <option value="inches" selected>Inches</option>
+        <option value="cm">Centimeters</option>
+      </select>
+    </div>
+
+    <table id="size-chart">
+      <thead>
+        <tr>
+          <th>Size</th>
+          <th>CHEST</th>
+          <th>LENGTH</th>
+          <th>SHOULDER</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <th data-label="Size">S</th>
+          <td data-label="CHEST" data-in="40" data-cm="101.6">40</td>
+          <td data-label="LENGTH" data-in="26.5" data-cm="67.3">26.5</td>
+          <td data-label="SHOULDER" data-in="17" data-cm="43.2">17</td>
+        </tr>
+        <tr>
+          <th data-label="Size">M</th>
+          <td data-label="CHEST" data-in="42" data-cm="106.7">42</td>
+          <td data-label="LENGTH" data-in="27.5" data-cm="69.8">27.5</td>
+          <td data-label="SHOULDER" data-in="18" data-cm="45.7">18</td>
+        </tr>
+        <tr>
+          <th data-label="Size">L</th>
+          <td data-label="CHEST" data-in="44" data-cm="111.8">44</td>
+          <td data-label="LENGTH" data-in="28" data-cm="71.1">28</td>
+          <td data-label="SHOULDER" data-in="19" data-cm="48.3">19</td>
+        </tr>
+        <tr>
+          <th data-label="Size">XL</th>
+          <td data-label="CHEST" data-in="46" data-cm="116.8">46</td>
+          <td data-label="LENGTH" data-in="28.5" data-cm="72.4">28.5</td>
+          <td data-label="SHOULDER" data-in="20" data-cm="50.8">20</td>
+        </tr>
+        <tr>
+          <th data-label="Size">XXL</th>
+          <td data-label="CHEST" data-in="48" data-cm="121.9">48</td>
+          <td data-label="LENGTH" data-in="29" data-cm="73.7">29</td>
+          <td data-label="SHOULDER" data-in="21" data-cm="53.3">21</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <script>
+    function toggleUnits() {
+      const unit = document.getElementById('unit-select').value;
+      const cells = document.querySelectorAll('#size-chart td');
+      cells.forEach(cell => {
+        if (unit === 'cm') {
+          cell.textContent = cell.getAttribute('data-cm');
+        } else {
+          cell.textContent = cell.getAttribute('data-in');
+        }
+      });
+    }
+  </script>
+</body>
+</html>
